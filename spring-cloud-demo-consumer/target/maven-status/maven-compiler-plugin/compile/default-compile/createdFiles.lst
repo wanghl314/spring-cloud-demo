@@ -1,0 +1,5 @@
+com\whl\spring\cloud\demo\consumer\controller\RpcController.class
+com\whl\spring\cloud\demo\consumer\config\ConsumerConfig.class
+com\whl\spring\cloud\demo\consumer\controller\DemoController.class
+com\whl\spring\cloud\demo\consumer\controller\UserController.class
+com\whl\spring\cloud\demo\consumer\ConsumerBootstrap.class

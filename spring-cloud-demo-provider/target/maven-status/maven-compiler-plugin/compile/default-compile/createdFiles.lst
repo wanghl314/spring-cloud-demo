@@ -1,0 +1,4 @@
+com\whl\spring\cloud\demo\provider\controller\DemoController.class
+com\whl\spring\cloud\demo\provider\ProviderBootstrap.class
+com\whl\spring\cloud\demo\provider\rpc\impl\UserServiceImpl.class
+com\whl\spring\cloud\demo\provider\controller\UserController.class
