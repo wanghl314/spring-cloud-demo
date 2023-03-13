@@ -22,11 +22,6 @@
         </dependency>
         <dependency>
             <groupId>com.whl.spring</groupId>
-            <artifactId>spring-cloud-demo-dubbo-plugin-ext</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.whl.spring</groupId>
             <artifactId>spring-cloud-demo-interface</artifactId>
             <version>${project.version}</version>
         </dependency>

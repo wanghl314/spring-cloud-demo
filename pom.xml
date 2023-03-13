@@ -163,7 +163,6 @@
 
     <modules>
         <module>spring-cloud-demo-consumer</module>
-        <module>spring-cloud-demo-dubbo-plugin-ext</module>
         <module>spring-cloud-demo-interface</module>
         <module>spring-cloud-demo-provider</module>
     </modules>
