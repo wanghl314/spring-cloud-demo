@@ -11,7 +11,7 @@
     <description>Demo project for Spring Cloud</description>
 
     <properties>
-        <!-- org/apache/dubbo/dubbo、org/apache/dubbo/dubbo-spring-boot-starter -->
+        <!-- org/apache/dubbo/dubbo-spring-boot-starter -->
         <dubbo.version>3.2.0</dubbo.version>
         <java.version>17</java.version>
         <!-- org/apache/maven/plugins/maven-compiler-plugin -->
@@ -58,11 +58,6 @@
                 <version>${spring-cloud-alibaba.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.dubbo</groupId>
-                <artifactId>dubbo</artifactId>
-                <version>${dubbo.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.dubbo</groupId>
