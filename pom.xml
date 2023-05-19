@@ -20,6 +20,8 @@
         <maven-javadoc-plugin.version>3.5.0</maven-javadoc-plugin.version>
         <!-- org/apache/maven/plugins/maven-source-plugin -->
         <maven-source-plugin.version>3.2.1</maven-source-plugin.version>
+        <!-- org/reflections/reflections -->
+        <reflections.version>0.10.2</reflections.version>
         <!-- org/springframework/boot/spring-boot-dependencies -->
         <spring-boot.version>3.0.6</spring-boot.version>
         <!-- org/springframework/cloud/spring-cloud-dependencies -->
@@ -61,8 +63,18 @@
             </dependency>
             <dependency>
                 <groupId>org.apache.dubbo</groupId>
+                <artifactId>dubbo</artifactId>
+                <version>${dubbo.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.dubbo</groupId>
                 <artifactId>dubbo-spring-boot-starter</artifactId>
                 <version>${dubbo.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.reflections</groupId>
+                <artifactId>reflections</artifactId>
+                <version>${reflections.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.springframework.boot</groupId>
@@ -163,6 +175,7 @@
     </build>
 
     <modules>
+        <module>spring-cloud-demo-common</module>
         <module>spring-cloud-demo-consumer</module>
         <module>spring-cloud-demo-interface</module>
         <module>spring-cloud-demo-provider</module>

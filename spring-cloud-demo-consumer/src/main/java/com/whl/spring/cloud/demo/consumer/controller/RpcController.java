@@ -28,4 +28,14 @@ public class RpcController {
         return this.demoService.test(name);
     }
 
+    @GetMapping("/demo2")
+    public String test2(String name) {
+        return this.demoService.test2(name);
+    }
+
+    @GetMapping("/demo3")
+    public String test3(String name) {
+        return this.demoService.test3(name);
+    }
+
 }
