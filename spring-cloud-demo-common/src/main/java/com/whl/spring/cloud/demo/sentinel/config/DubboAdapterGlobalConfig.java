@@ -1,5 +1,8 @@
-package com.whl.spring.cloud.demo.dubbo;
+package com.whl.spring.cloud.demo.sentinel.config;
 
+
+import com.whl.spring.cloud.demo.sentinel.fallback.DefaultDubboFallback;
+import com.whl.spring.cloud.demo.sentinel.fallback.DubboFallback;
 
 public class DubboAdapterGlobalConfig {
     private static volatile DubboFallback consumerFallback = new DefaultDubboFallback();

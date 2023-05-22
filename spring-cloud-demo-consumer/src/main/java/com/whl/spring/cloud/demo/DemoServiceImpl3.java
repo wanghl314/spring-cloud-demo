@@ -1,10 +1,10 @@
 package com.whl.spring.cloud.demo;
 
-import com.whl.spring.cloud.demo.annotation.AddSentinel;
-import com.whl.spring.cloud.demo.annotation.SentinelResource;
+import com.whl.spring.cloud.demo.sentinel.annotation.AddSentinel;
+import com.whl.spring.cloud.demo.sentinel.annotation.DemoSentinelResource;
 import com.whl.spring.cloud.demo.sentinel.SentinelExceptionEnum;
 
-@SentinelResource
+@DemoSentinelResource
 public class DemoServiceImpl3 extends DemoServiceImpl {
 
     @Override

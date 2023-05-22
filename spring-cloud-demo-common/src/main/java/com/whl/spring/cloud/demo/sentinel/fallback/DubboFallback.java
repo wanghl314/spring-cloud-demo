@@ -1,4 +1,4 @@
-package com.whl.spring.cloud.demo.dubbo;
+package com.whl.spring.cloud.demo.sentinel.fallback;
 
 import org.apache.dubbo.rpc.Invocation;
 import org.apache.dubbo.rpc.Invoker;

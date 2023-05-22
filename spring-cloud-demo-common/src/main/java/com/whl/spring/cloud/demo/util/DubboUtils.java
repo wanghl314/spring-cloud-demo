@@ -1,4 +1,4 @@
-package com.whl.spring.cloud.demo.dubbo;
+package com.whl.spring.cloud.demo.util;
 
 import org.apache.dubbo.rpc.RpcException;
 

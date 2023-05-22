@@ -1,4 +1,4 @@
-package com.whl.spring.cloud.demo.annotation;
+package com.whl.spring.cloud.demo.sentinel.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Inherited;
@@ -9,5 +9,5 @@ import java.lang.annotation.Target;
 @Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 @Inherited
-public @interface SentinelResource {
+public @interface DemoSentinelResource {
 }

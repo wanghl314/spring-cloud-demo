@@ -1,1 +1,1 @@
-dubbo.consumer.filter=com.whl.spring.cloud.demo.dubbo.GlobalDubboConsumerFilter
+demo.dubbo.consumer.filter=com.whl.spring.cloud.demo.sentinel.GlobalDubboConsumerFilter

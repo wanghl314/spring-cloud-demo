@@ -1,4 +1,4 @@
-package com.whl.spring.cloud.demo.dubbo;
+package com.whl.spring.cloud.demo.sentinel.fallback;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -16,8 +16,9 @@ import org.apache.dubbo.rpc.RpcInvocation;
 import org.apache.dubbo.rpc.support.RpcUtils;
 import org.springframework.util.CollectionUtils;
 
-import com.whl.spring.cloud.demo.annotation.AddSentinel;
-import com.whl.spring.cloud.demo.annotation.SentinelResource;
+import com.whl.spring.cloud.demo.util.DubboUtils;
+import com.whl.spring.cloud.demo.sentinel.annotation.AddSentinel;
+import com.whl.spring.cloud.demo.sentinel.annotation.DemoSentinelResource;
 import com.whl.spring.cloud.demo.sentinel.SentinelExceptionEnum;
 import com.whl.spring.cloud.demo.sentinel.SentinelResult;
 import com.whl.spring.cloud.demo.util.ReflectionUtils;
@@ -54,9 +55,9 @@ public class DefaultDubboFallback implements DubboFallback {
             resultList = new ArrayList<SentinelResult>();
 
             for (Class<?> service : serviceImpl) {
-                SentinelResource sentinelResource = service.getAnnotation(SentinelResource.class);
+                DemoSentinelResource demoResource = service.getAnnotation(DemoSentinelResource.class);
 
-                if (sentinelResource != null) {
+                if (demoResource != null) {
                     Method method = service.getMethod(RpcUtils.getMethodName(invocation), RpcUtils.getParameterTypes(invocation));
                     AddSentinel addSentinel = method.getAnnotation(AddSentinel.class);
 
