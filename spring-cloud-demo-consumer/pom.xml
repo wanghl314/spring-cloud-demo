@@ -22,6 +22,14 @@
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
         </dependency>
         <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba.csp</groupId>
+            <artifactId>sentinel-apache-dubbo3-adapter</artifactId>
+        </dependency>
+        <dependency>
             <groupId>com.whl.spring</groupId>
             <artifactId>spring-cloud-demo-interface</artifactId>
             <version>${project.version}</version>
