@@ -1,0 +1,26 @@
+[
+  {
+    "limitApp": "default",
+    "resource": "demoController#index",
+    "grade": 1,
+    "count": 1
+  },
+  {
+    "limitApp": "default",
+    "resource": "demoController#test",
+    "grade": 1,
+    "count": 1
+  },
+  {
+    "limitApp": "default",
+    "resource": "demoService#test",
+    "grade": 1,
+    "count": 1
+  },
+  {
+    "limitApp": "default",
+    "resource": "GET:http://spring-cloud-demo-provider/demo",
+    "grade": 1,
+    "count": 1
+  }
+]

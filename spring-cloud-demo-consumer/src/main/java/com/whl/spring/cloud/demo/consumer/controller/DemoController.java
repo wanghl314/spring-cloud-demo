@@ -19,15 +19,25 @@ public class DemoController {
     private RestTemplate restTemplate;
 
     @GetMapping(value = {"", "/"})
-    public String index() {
+    public String index() throws Exception {
         String path = String.format("http://%s/demo", SERVICE_NAME);
         System.out.println("request path:" + path);
         return this.restTemplate.getForObject(path, String.class);
     }
 
     @GetMapping("/test")
-    public String test(HttpServletRequest request, HttpServletResponse response) {
+    public String test(HttpServletRequest request, HttpServletResponse response) throws Exception {
         String path = String.format("http://%s/demo/test", SERVICE_NAME);
+        System.out.println("request path:" + path);
+        ResponseEntity<String> entity = this.restTemplate.getForEntity(path, String.class);
+        String value = entity.getHeaders().getFirst("test");
+        response.setHeader("test", value);
+        return entity.getBody();
+    }
+
+    @GetMapping("/testRestTemplateDegrade")
+    public String testRestTemplateDegrade(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        String path = String.format("http://%s/demo/testRestTemplateDegrade", SERVICE_NAME);
         System.out.println("request path:" + path);
         ResponseEntity<String> entity = this.restTemplate.getForEntity(path, String.class);
         String value = entity.getHeaders().getFirst("test");

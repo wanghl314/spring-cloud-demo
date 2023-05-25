@@ -16,15 +16,20 @@ public class DemoController {
 
     @SentinelResource(value = "demoController#index", blockHandler = "handlerIndex")
     @GetMapping(value = {"", "/"})
-    public String index() {
+    public String index() throws Exception {
         return "Demo";
     }
 
     @SentinelResource(value = "demoController#test", blockHandler = "handlerTest")
     @GetMapping("/test")
-    public String test(HttpServletRequest request, HttpServletResponse response) {
+    public String test(HttpServletRequest request, HttpServletResponse response) throws Exception {
         response.setHeader("test", "test");
         return request.getServletContext().getRealPath("");
+    }
+
+    @GetMapping("/testRestTemplateDegrade")
+    public String testRestTemplateDegrade(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        throw new RuntimeException("固定返回异常信息");
     }
 
     public String handlerIndex(BlockException e) {

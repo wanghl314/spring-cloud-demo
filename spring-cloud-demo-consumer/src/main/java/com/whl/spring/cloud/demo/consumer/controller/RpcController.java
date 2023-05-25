@@ -18,23 +18,23 @@ public class RpcController {
     private DemoService demoService;
 
     @GetMapping("/user")
-    public String sayHello(String name) {
+    public String sayHello(String name) throws Exception {
         this.userService.sayHello(name);
         return "SUCCESS";
     }
 
     @GetMapping("/demo")
-    public String test(String name) {
+    public String test(String name) throws Exception {
         return this.demoService.test(name);
     }
 
     @GetMapping("/demo2")
-    public String test2(String name) {
+    public String test2(String name) throws Exception {
         return this.demoService.test2(name);
     }
 
     @GetMapping("/demo3")
-    public String test3(String name) {
+    public String test3(String name) throws Exception {
         return this.demoService.test3(name);
     }
 

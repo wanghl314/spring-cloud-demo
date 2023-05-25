@@ -1,0 +1,11 @@
+[
+  {
+    "limitApp": "default",
+    "resource": "GET:http://spring-cloud-demo-provider/demo/testRestTemplateDegrade",
+    "grade": 2,
+    "count": 2,
+    "timeWindow": 10,
+    "minRequestAmount": 5,
+    "statIntervalMs": 1000
+  }
+]

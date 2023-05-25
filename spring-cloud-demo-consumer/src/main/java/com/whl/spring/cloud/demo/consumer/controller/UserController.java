@@ -13,12 +13,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
 
     @GetMapping(value = {"", "/"})
-    public String index() {
+    public String index() throws Exception {
         return "User";
     }
 
     @GetMapping("/test")
-    public Object test() {
+    public Object test() throws Exception {
         Map<String, Object> data = new HashMap<String, Object>();
         data.put("a", RandomStringUtils.randomAlphabetic(10));
         data.put("b", RandomStringUtils.randomAlphanumeric(10));
