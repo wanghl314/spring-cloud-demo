@@ -17,4 +17,9 @@ public class DemoServiceImpl implements DemoService {
         return null;
     }
 
+    @Override
+    public String testDegrade(String name) {
+        return null;
+    }
+
 }

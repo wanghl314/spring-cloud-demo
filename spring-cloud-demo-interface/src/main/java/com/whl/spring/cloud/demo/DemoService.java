@@ -6,4 +6,6 @@ public interface DemoService {
     String test2(String name);
 
     String test3(String name);
+
+    String testDegrade(String name);
 }

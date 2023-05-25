@@ -32,6 +32,11 @@ public class DemoServiceImpl implements DemoService {
         return "Hello " + name + ", random string is " + RandomStringUtils.randomAlphanumeric(10);
     }
 
+    @Override
+    public String testDegrade(String name) {
+        throw new RuntimeException("固定返回异常信息");
+    }
+
     public String handlerTest(String name, BlockException e) {
         return "DemoService#test: 请求过于频繁，请稍后再试。";
     }

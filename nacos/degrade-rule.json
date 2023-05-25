@@ -7,5 +7,14 @@
     "timeWindow": 10,
     "minRequestAmount": 5,
     "statIntervalMs": 1000
+  },
+  {
+    "limitApp": "default",
+    "resource": "com.whl.spring.cloud.demo.DemoService:testDegrade(java.lang.String)",
+    "grade": 2,
+    "count": 2,
+    "timeWindow": 10,
+    "minRequestAmount": 5,
+    "statIntervalMs": 1000
   }
 ]
