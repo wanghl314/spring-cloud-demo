@@ -12,7 +12,7 @@
 
     <properties>
         <!-- org/apache/dubbo/dubbo-spring-boot-starter -->
-        <dubbo.version>3.2.3</dubbo.version>
+        <dubbo.version>3.2.4</dubbo.version>
         <java.version>17</java.version>
         <!-- org/apache/maven/plugins/maven-compiler-plugin -->
         <maven-compiler-plugin.version>3.11.0</maven-compiler-plugin.version>
@@ -25,9 +25,9 @@
         <!-- com/alibaba/csp/sentinel-apache-dubbo3-adapter -->
         <sentinel.version>1.8.6</sentinel.version>
         <!-- org/springframework/boot/spring-boot-dependencies -->
-        <spring-boot.version>3.1.1</spring-boot.version>
+        <spring-boot.version>3.1.2</spring-boot.version>
         <!-- org/springframework/cloud/spring-cloud-dependencies -->
-        <spring-cloud.version>2022.0.3</spring-cloud.version>
+        <spring-cloud.version>2022.0.4</spring-cloud.version>
         <!-- com/alibaba/cloud/spring-cloud-alibaba-dependencies -->
         <spring-cloud-alibaba.version>2022.0.0.0-RC2</spring-cloud-alibaba.version>
     </properties>
