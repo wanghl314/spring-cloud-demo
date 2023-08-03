@@ -11,7 +11,7 @@
     <description>Demo project for Spring Cloud</description>
 
     <properties>
-        <!-- org/apache/dubbo/dubbo-spring-boot-starter -->
+        <!-- org/apache/dubbo/dubbo-bom -->
         <dubbo.version>3.2.4</dubbo.version>
         <java.version>17</java.version>
         <!-- org/apache/maven/plugins/maven-compiler-plugin -->
@@ -20,8 +20,6 @@
         <maven-javadoc-plugin.version>3.5.0</maven-javadoc-plugin.version>
         <!-- org/apache/maven/plugins/maven-source-plugin -->
         <maven-source-plugin.version>3.3.0</maven-source-plugin.version>
-        <!-- io/micrometer/micrometer-tracing-bom -->
-        <micrometer-tracing.version>1.1.3</micrometer-tracing.version>
         <!-- org/reflections/reflections -->
         <reflections.version>0.10.2</reflections.version>
         <!-- com/alibaba/csp/sentinel-apache-dubbo3-adapter -->
@@ -71,21 +69,11 @@
                 <version>${sentinel.version}</version>
             </dependency>
             <dependency>
-                <groupId>io.micrometer</groupId>
-                <artifactId>micrometer-tracing-bom</artifactId>
-                <version>${micrometer-tracing.version}</version>
+                <groupId>org.apache.dubbo</groupId>
+                <artifactId>dubbo-bom</artifactId>
+                <version>${dubbo.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.dubbo</groupId>
-                <artifactId>dubbo</artifactId>
-                <version>${dubbo.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.dubbo</groupId>
-                <artifactId>dubbo-spring-boot-starter</artifactId>
-                <version>${dubbo.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.reflections</groupId>
