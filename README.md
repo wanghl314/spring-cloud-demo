@@ -10,11 +10,5 @@ http://127.0.0.1:8084
 <br>
 sentinel/sentinel
 
-## apache-skywalking
-http://127.0.0.1:8083
-* ConsumerBootstrap
-<br>
-`-javaagent:E:\spring-cloud-demo-consumer\skywalking-agent.jar`
-* ProviderBootstrap
-<br>
-`-javaagent:E:\spring-cloud-demo-provider\skywalking-agent.jar`
+## zipkin-server
+http://127.0.0.1:9411
