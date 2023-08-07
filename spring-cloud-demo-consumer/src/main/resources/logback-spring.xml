@@ -20,5 +20,4 @@
 		<appender-ref ref="FILE" />
 	</root>
 	<logger name="com.whl.spring.cloud.demo" level="DEBUG" />
-	<logger name="io.micrometer" level="DEBUG" />
 </configuration>
