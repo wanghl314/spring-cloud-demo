@@ -1,6 +1,8 @@
 package com.whl.spring.cloud.demo.consumer.controller;
 
 import org.apache.dubbo.config.annotation.DubboReference;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,6 +15,8 @@ import com.whl.spring.cloud.demo.UserService;
 @RestController
 @RequestMapping("/rpc")
 public class RpcController {
+    private static Logger logger = LoggerFactory.getLogger(RpcController.class);
+
     @DubboReference
     private UserService userService;
 
@@ -21,27 +25,33 @@ public class RpcController {
 
     @GetMapping("/user")
     public String sayHello(String name) throws Exception {
+        logger.info("sayHello, {}", name);
         this.userService.sayHello(name);
         return "SUCCESS";
     }
 
     @GetMapping("/demo")
     public String test(String name) throws Exception {
+        logger.info("test, {}", name);
         return this.demoService.test(name);
     }
 
     @GetMapping("/demo2")
     public String test2(String name) throws Exception {
+        logger.info("test2, {}", name);
         return this.demoService.test2(name);
     }
 
     @GetMapping("/demo3")
     public String test3(String name) throws Exception {
+        logger.info("test3, {}", name);
         return this.demoService.test3(name);
     }
 
     @GetMapping("/testDegrade")
     public String testDegrade(String name) throws Exception {
+        logger.info("testDegrade, {}", name);
+
         try {
             return this.demoService.testDegrade(name);
         } catch (Exception e) {
