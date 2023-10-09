@@ -1,5 +1,13 @@
 # spring-cloud-demo
 
+## 技术栈
+* dubbo
+* nacos
+* seata
+* sentinel
+* spring-cloud
+* zipkin
+
 ## nacos
 http://127.0.0.1:81
 <br>
