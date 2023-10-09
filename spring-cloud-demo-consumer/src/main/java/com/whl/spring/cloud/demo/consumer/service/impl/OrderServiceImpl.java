@@ -18,7 +18,7 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
-import com.whl.spring.cloud.demo.bean.Order;
+import com.whl.spring.cloud.demo.consumer.bean.Order;
 import com.whl.spring.cloud.demo.consumer.service.OrderService;
 
 import io.seata.core.context.RootContext;

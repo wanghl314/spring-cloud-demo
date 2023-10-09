@@ -1,4 +1,4 @@
-package com.whl.spring.cloud.demo.bean;
+package com.whl.spring.cloud.demo.consumer.bean;
 
 import java.io.Serial;
 import java.io.Serializable;
