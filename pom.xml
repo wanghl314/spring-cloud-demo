@@ -12,8 +12,14 @@
 
     <properties>
         <!-- org/apache/dubbo/dubbo-bom -->
-        <dubbo.version>3.2.8</dubbo.version>
+        <dubbo.version>3.2.9</dubbo.version>
+        <!-- org/apache/dubbo/extensions/dubbo-rpc-hessian -->
+        <dubbo-rpc-hessian.version>1.0.1</dubbo-rpc-hessian.version>
+        <!-- com/caucho/hessian -->
+        <hessian.version>4.0.66</hessian.version>
         <java.version>17</java.version>
+        <!-- org/eclipse/jetty/jetty-server -->
+        <jetty.version>9.4.53.v20231009</jetty.version>
         <!-- org/apache/maven/plugins/maven-compiler-plugin -->
         <maven-compiler-plugin.version>3.11.0</maven-compiler-plugin.version>
         <!-- org/apache/maven/plugins/maven-javadoc-plugin -->
@@ -70,9 +76,26 @@
                 <version>${sentinel.version}</version>
             </dependency>
             <dependency>
+                <groupId>com.caucho</groupId>
+                <artifactId>hessian</artifactId>
+                <version>${hessian.version}</version>
+            </dependency>
+            <dependency>
                 <groupId>org.apache.dubbo</groupId>
                 <artifactId>dubbo-bom</artifactId>
                 <version>${dubbo.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.dubbo.extensions</groupId>
+                <artifactId>dubbo-rpc-hessian</artifactId>
+                <version>${dubbo-rpc-hessian.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-bom</artifactId>
+                <version>${jetty.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
