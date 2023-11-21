@@ -6,6 +6,8 @@ import java.io.OutputStream;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.web.ServerProperties;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,6 +31,9 @@ import jakarta.servlet.http.HttpServletResponse;
 @RequestMapping("/rpc")
 public class RpcController {
     private static Logger logger = LoggerFactory.getLogger(RpcController.class);
+
+    @Autowired
+    private ServerProperties serverProperties;
 
     @DubboReference
     private UserService userService;
@@ -90,6 +95,8 @@ public class RpcController {
             return;
         }
         request.setAttribute("jakarta.servlet.error.status_code", HttpServletResponse.SC_NOT_FOUND);
+        String errorPath = this.serverProperties.getError().getPath();
+        request.getRequestDispatcher(errorPath).forward(request, response);
     }
 
     @GetMapping("/testDegrade")
