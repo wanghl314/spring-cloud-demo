@@ -24,6 +24,7 @@ import com.whl.spring.cloud.demo.FileService;
 import com.whl.spring.cloud.demo.UserService;
 import com.whl.spring.cloud.demo.bean.FileInfo;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
@@ -94,7 +95,7 @@ public class RpcController {
             }
             return;
         }
-        request.setAttribute("jakarta.servlet.error.status_code", HttpServletResponse.SC_NOT_FOUND);
+        request.setAttribute(RequestDispatcher.ERROR_STATUS_CODE, HttpServletResponse.SC_NOT_FOUND);
         String errorPath = this.serverProperties.getError().getPath();
         request.getRequestDispatcher(errorPath).forward(request, response);
     }
