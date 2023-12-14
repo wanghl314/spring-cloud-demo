@@ -91,6 +91,12 @@
                 <groupId>org.apache.dubbo.extensions</groupId>
                 <artifactId>dubbo-rpc-hessian</artifactId>
                 <version>${dubbo-rpc-hessian.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>commons-logging</groupId>
+                        <artifactId>commons-logging</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
             <dependency>
                 <groupId>org.eclipse.jetty</groupId>
