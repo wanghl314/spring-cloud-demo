@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import com.whl.spring.cloud.demo.StorageService;
+import com.whl.spring.cloud.demo.service.StorageService;
 
 import io.seata.core.context.RootContext;
 

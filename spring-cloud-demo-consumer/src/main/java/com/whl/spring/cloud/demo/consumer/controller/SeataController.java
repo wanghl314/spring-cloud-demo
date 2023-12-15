@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.whl.spring.cloud.demo.StorageService;
+import com.whl.spring.cloud.demo.service.StorageService;
 import com.whl.spring.cloud.demo.consumer.service.OrderService;
 
 import io.seata.spring.annotation.GlobalTransactional;

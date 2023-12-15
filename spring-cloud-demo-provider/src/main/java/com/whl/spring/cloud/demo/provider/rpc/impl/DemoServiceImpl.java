@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.alibaba.csp.sentinel.slots.block.BlockException;
-import com.whl.spring.cloud.demo.DemoService;
+import com.whl.spring.cloud.demo.service.DemoService;
 
 @Service("demoServiceImpl")
 public class DemoServiceImpl implements DemoService {

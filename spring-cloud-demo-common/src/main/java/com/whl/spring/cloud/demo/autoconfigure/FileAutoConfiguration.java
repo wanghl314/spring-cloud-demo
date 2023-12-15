@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;
 
-import com.whl.spring.cloud.demo.FileService;
+import com.whl.spring.cloud.demo.service.FileService;
 import com.whl.spring.cloud.demo.service.impl.FileServiceImpl;
 
 @ConditionalOnBean(RestTemplate.class)

@@ -18,9 +18,9 @@ import org.springframework.web.multipart.MultipartFile;
 import com.alibaba.cloud.commons.io.IOUtils;
 import com.alibaba.csp.sentinel.slots.block.BlockException;
 import com.alibaba.csp.sentinel.slots.block.degrade.DegradeException;
-import com.whl.spring.cloud.demo.DemoService;
-import com.whl.spring.cloud.demo.FileService;
-import com.whl.spring.cloud.demo.UserService;
+import com.whl.spring.cloud.demo.service.DemoService;
+import com.whl.spring.cloud.demo.service.FileService;
+import com.whl.spring.cloud.demo.service.UserService;
 import com.whl.spring.cloud.demo.bean.FileInfo;
 
 import jakarta.servlet.RequestDispatcher;

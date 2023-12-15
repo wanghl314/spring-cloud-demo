@@ -43,7 +43,7 @@
         </dependency>
         <dependency>
             <groupId>com.whl.spring</groupId>
-            <artifactId>spring-cloud-demo-interface</artifactId>
+            <artifactId>spring-cloud-demo-common</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>

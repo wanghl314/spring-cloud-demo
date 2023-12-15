@@ -1,4 +1,4 @@
-package com.whl.spring.cloud.demo;
+package com.whl.spring.cloud.demo.service;
 
 public class DemoServiceImpl implements DemoService {
 

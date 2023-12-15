@@ -1,4 +1,4 @@
-package com.whl.spring.cloud.demo;
+package com.whl.spring.cloud.demo.service;
 
 public interface UserService {
     void sayHello(String name);
