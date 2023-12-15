@@ -3,6 +3,7 @@ package com.whl.spring.cloud.demo.bean;
 import java.io.InputStream;
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.function.Supplier;
 
 public class FileInfo implements Serializable {
     @Serial
@@ -16,17 +17,16 @@ public class FileInfo implements Serializable {
 
     private String contentType;
 
-    private InputStream inputStream;
+    transient private Supplier<InputStream> fetchStream;
 
     public FileInfo() {
     }
 
-    public FileInfo(String name, long size, long lastModified, String contentType, InputStream inputStream) {
+    public FileInfo(String name, long size, long lastModified, String contentType) {
         this.name = name;
         this.size = size;
         this.lastModified = lastModified;
         this.contentType = contentType;
-        this.inputStream = inputStream;
     }
 
     public String getName() {
@@ -61,12 +61,15 @@ public class FileInfo implements Serializable {
         this.contentType = contentType;
     }
 
-    public InputStream getInputStream() {
-        return inputStream;
+    public void setFetchStream(Supplier<InputStream> fetchStream) {
+        this.fetchStream = fetchStream;
     }
 
-    public void setInputStream(InputStream inputStream) {
-        this.inputStream = inputStream;
+    public InputStream getInputStream() {
+        if (this.fetchStream != null) {
+            return this.fetchStream.get();
+        }
+        return null;
     }
 
 }

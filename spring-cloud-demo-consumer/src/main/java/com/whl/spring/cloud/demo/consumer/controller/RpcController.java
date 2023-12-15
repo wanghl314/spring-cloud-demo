@@ -1,6 +1,5 @@
 package com.whl.spring.cloud.demo.consumer.controller;
 
-import java.io.InputStream;
 import java.io.OutputStream;
 
 import org.apache.dubbo.config.annotation.DubboReference;
@@ -42,7 +41,7 @@ public class RpcController {
     @DubboReference(group = "test")
     private DemoService demoService;
 
-    @DubboReference
+    @Autowired
     private FileService fileService;
 
     @GetMapping("/user")
@@ -73,24 +72,22 @@ public class RpcController {
     @PostMapping("/upload")
     public FileInfo testUpload(@RequestParam(value = "file") MultipartFile file) throws Exception {
         logger.info("upload");
-        FileInfo fileInfo = this.fileService.upload(file.getOriginalFilename(), file.getInputStream());
-        fileInfo.setContentType(file.getContentType());
-        return fileInfo;
+        return this.fileService.upload(file, file.getOriginalFilename());
     }
 
     @GetMapping("/download/{name}")
     public void testDownload(HttpServletRequest request, HttpServletResponse response, @PathVariable String name) throws Exception {
         logger.info("download, {}", name);
-        InputStream file = this.fileService.download(name);
+        FileInfo fileInfo = this.fileService.download(name);
 
-        if (file != null) {
-            response.setHeader("Content-Type", "image/jpeg");
+        if (fileInfo != null) {
+            response.setHeader("Content-Type", fileInfo.getContentType());
             response.setHeader("Content-Disposition", "attachment; filename=" + name);
-            response.setHeader("Content-Length", "203124");
+            response.setHeader("Content-Length", String.valueOf(fileInfo.getSize()));
             response.setHeader("Cache-Control", "public,max-age=604800");
 
             try (OutputStream os = response.getOutputStream()) {
-                IOUtils.copyLarge(file, os);
+                IOUtils.copyLarge(fileInfo.getInputStream(), os);
                 os.flush();
             }
             return;
