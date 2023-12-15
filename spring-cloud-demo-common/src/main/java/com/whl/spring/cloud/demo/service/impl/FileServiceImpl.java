@@ -1,4 +1,4 @@
-package com.whl.spring.cloud.demo;
+package com.whl.spring.cloud.demo.service.impl;
 
 import java.io.IOException;
 import java.net.URI;
@@ -18,6 +18,7 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.whl.spring.cloud.demo.FileService;
 import com.whl.spring.cloud.demo.bean.FileInfo;
 
 public class FileServiceImpl implements FileService {
