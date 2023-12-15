@@ -11,15 +11,14 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.http.client.ClientHttpRequest;
-import org.springframework.http.client.ClientHttpRequestFactory;
 import org.springframework.http.client.ClientHttpResponse;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.whl.spring.cloud.demo.service.FileService;
 import com.whl.spring.cloud.demo.bean.FileInfo;
+import com.whl.spring.cloud.demo.service.FileService;
 
 public class FileServiceImpl implements FileService {
     private static Logger logger = LoggerFactory.getLogger(FileServiceImpl.class);
@@ -55,8 +54,8 @@ public class FileServiceImpl implements FileService {
         if (fileInfo != null) {
             fileInfo.setFetchStream(() -> {
                 try {
-                    ClientHttpRequestFactory httpRequestFactory = restTemplate.getRequestFactory();
-                    ClientHttpRequest httpRequest = httpRequestFactory.createRequest(new URI("http://spring-cloud-demo-provider/file/download?name=" + name), HttpMethod.GET);
+                    URI uri = new URI("http://spring-cloud-demo-provider/file/download?name=" + name);
+                    ClientHttpRequest httpRequest = restTemplate.getRequestFactory().createRequest(uri, HttpMethod.GET);
                     ClientHttpResponse httpResponse = httpRequest.execute();
                     return httpResponse.getBody();
                 } catch (Exception e) {
