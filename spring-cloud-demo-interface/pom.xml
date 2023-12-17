@@ -13,15 +13,6 @@
     <packaging>jar</packaging>
 
     <dependencies>
-        <!--<dependency>
-            <groupId>com.whl.spring</groupId>
-            <artifactId>spring-cloud-demo-common</artifactId>
-            <version>${project.version}</version>
-        </dependency>-->
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-        </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>

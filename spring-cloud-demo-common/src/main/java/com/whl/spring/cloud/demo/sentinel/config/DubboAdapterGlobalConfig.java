@@ -1,6 +1,5 @@
 package com.whl.spring.cloud.demo.sentinel.config;
 
-
 import com.whl.spring.cloud.demo.sentinel.fallback.DefaultDubboFallback;
 import com.whl.spring.cloud.demo.sentinel.fallback.DubboFallback;
 
