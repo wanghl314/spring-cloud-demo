@@ -49,12 +49,12 @@ public class FileServiceImpl implements FileService {
 
     @Override
     public FileInfo download(String name) throws IOException {
-        FileInfo fileInfo = this.restTemplate.getForObject("http://spring-cloud-demo-provider/file/get?name=" + name, FileInfo.class);
+        FileInfo fileInfo = this.restTemplate.getForObject("http://spring-cloud-demo-provider/file/get/" + name, FileInfo.class);
 
         if (fileInfo != null) {
             fileInfo.setFetchStream(() -> {
                 try {
-                    URI uri = new URI("http://spring-cloud-demo-provider/file/download?name=" + name);
+                    URI uri = new URI("http://spring-cloud-demo-provider/file/download/" + name);
                     ClientHttpRequest httpRequest = restTemplate.getRequestFactory().createRequest(uri, HttpMethod.GET);
                     ClientHttpResponse httpResponse = httpRequest.execute();
                     return httpResponse.getBody();

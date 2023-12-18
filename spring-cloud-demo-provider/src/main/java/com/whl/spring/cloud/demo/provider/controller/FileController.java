@@ -13,6 +13,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.web.ServerProperties;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -56,8 +57,8 @@ public class FileController {
         return new FileInfo(storeFileName, storeFile.length(), storeFile.lastModified(), file.getContentType());
     }
 
-    @GetMapping("/get")
-    public FileInfo get(HttpServletRequest request, HttpServletResponse response, @RequestParam String name) throws Exception {
+    @GetMapping("/get/{name}")
+    public FileInfo get(HttpServletRequest request, HttpServletResponse response, @PathVariable String name) throws Exception {
         logger.info("get, {}", name);
         Path path = this.getFileStorePath();
         Path file = path.resolve(name);
@@ -73,8 +74,8 @@ public class FileController {
     }
 
 
-    @GetMapping("/download")
-    public void download(HttpServletRequest request, HttpServletResponse response, @RequestParam String name) throws Exception {
+    @GetMapping("/download/{name}")
+    public void download(HttpServletRequest request, HttpServletResponse response, @PathVariable String name) throws Exception {
         logger.info("download, {}", name);
         Path path = this.getFileStorePath();
         Path file = path.resolve(name);
