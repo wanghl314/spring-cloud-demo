@@ -15,20 +15,22 @@
         <dubbo.version>3.2.10</dubbo.version>
         <java.version>17</java.version>
         <!-- org/apache/maven/plugins/maven-compiler-plugin -->
-        <maven-compiler-plugin.version>3.11.0</maven-compiler-plugin.version>
+        <maven-compiler-plugin.version>3.12.1</maven-compiler-plugin.version>
         <!-- org/apache/maven/plugins/maven-javadoc-plugin -->
         <maven-javadoc-plugin.version>3.6.3</maven-javadoc-plugin.version>
         <!-- org/apache/maven/plugins/maven-source-plugin -->
         <maven-source-plugin.version>3.3.0</maven-source-plugin.version>
+        <!-- io/micrometer/micrometer-tracing-bom -->
+        <micrometer-tracing.version>1.2.2</micrometer-tracing.version>
         <!-- org/reflections/reflections -->
         <reflections.version>0.10.2</reflections.version>
         <revision>1.0-SNAPSHOT</revision>
         <!-- com/alibaba/csp/sentinel-apache-dubbo3-adapter -->
-        <sentinel.version>1.8.6</sentinel.version>
+        <sentinel.version>1.8.7</sentinel.version>
         <!-- org/springframework/boot/spring-boot-dependencies -->
-        <spring-boot.version>3.1.7</spring-boot.version>
+        <spring-boot.version>3.2.2</spring-boot.version>
         <!-- org/springframework/cloud/spring-cloud-dependencies -->
-        <spring-cloud.version>2022.0.4</spring-cloud.version>
+        <spring-cloud.version>2023.0.0</spring-cloud.version>
         <!-- com/alibaba/cloud/spring-cloud-alibaba-dependencies -->
         <spring-cloud-alibaba.version>2022.0.0.0</spring-cloud-alibaba.version>
     </properties>
@@ -68,6 +70,13 @@
                 <groupId>com.alibaba.csp</groupId>
                 <artifactId>sentinel-apache-dubbo3-adapter</artifactId>
                 <version>${sentinel.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.micrometer</groupId>
+                <artifactId>micrometer-tracing-bom</artifactId>
+                <version>${micrometer-tracing.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
             <dependency>
                 <groupId>org.apache.dubbo</groupId>
