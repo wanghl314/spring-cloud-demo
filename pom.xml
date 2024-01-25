@@ -33,6 +33,8 @@
         <spring-cloud.version>2023.0.0</spring-cloud.version>
         <!-- com/alibaba/cloud/spring-cloud-alibaba-dependencies -->
         <spring-cloud-alibaba.version>2022.0.0.0</spring-cloud-alibaba.version>
+        <!-- org/springframework/cloud/spring-cloud-commons、org/springframework/cloud/spring-cloud-loadbalancer -->
+        <spring-cloud-commons.version>4.1.1</spring-cloud-commons.version>
     </properties>
 
     <repositories>
@@ -104,6 +106,18 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <!-- 解决spring-cloud-commons-4.1.0、spring-cloud-loadbalancer-4.1.0版本日志不打印traceId的问题 -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-commons</artifactId>
+                <version>${spring-cloud-commons.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-loadbalancer</artifactId>
+                <version>${spring-cloud-commons.version}</version>
+            </dependency>
+            <!-- 解决spring-cloud-commons-4.1.0、spring-cloud-loadbalancer-4.1.0版本日志不打印traceId的问题 -->
         </dependencies>
     </dependencyManagement>
 
