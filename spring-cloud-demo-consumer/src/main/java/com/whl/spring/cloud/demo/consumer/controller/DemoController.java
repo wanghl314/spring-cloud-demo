@@ -7,10 +7,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestClient;
 import org.springframework.web.client.RestTemplate;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+
+import java.util.Objects;
 
 @RestController
 @RequestMapping("/demo")
@@ -21,6 +24,9 @@ public class DemoController {
 
     @Autowired
     private RestTemplate restTemplate;
+
+    @Autowired
+    private RestClient restClient;
 
     @GetMapping(value = {"", "/"})
     public String index() throws Exception {
@@ -37,6 +43,17 @@ public class DemoController {
         String value = entity.getHeaders().getFirst("test");
         response.setHeader("test", value);
         return entity.getBody();
+    }
+
+    @GetMapping("/test2")
+    public String test2(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        String path = String.format("http://%s/demo/test", SERVICE_NAME);
+        logger.info("request path: {}", path);
+        return this.restClient.get().uri(path).exchange((req, resp) -> {
+            String value = resp.getHeaders().getFirst("test");
+            response.setHeader("test", value);
+            return Objects.requireNonNull(resp.bodyTo(String.class));
+        });
     }
 
     @GetMapping("/testRestTemplateDegrade")
