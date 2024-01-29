@@ -13,7 +13,7 @@ import org.springframework.web.service.annotation.PostExchange;
 import java.io.IOException;
 
 @HttpExchange("http://spring-cloud-demo-provider/file")
-public interface FileServiceV2 {
+public interface FileServiceHttpExchange {
     @PostExchange("/upload")
     FileInfo upload(@RequestPart("file") MultipartFile file) throws IOException;
 

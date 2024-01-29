@@ -1,9 +1,7 @@
 package com.whl.spring.cloud.demo.service.impl;
 
-import java.io.IOException;
-import java.net.URI;
-import java.util.List;
-
+import com.whl.spring.cloud.demo.bean.FileInfo;
+import com.whl.spring.cloud.demo.service.FileService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpEntity;
@@ -17,15 +15,16 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.whl.spring.cloud.demo.bean.FileInfo;
-import com.whl.spring.cloud.demo.service.FileService;
+import java.io.IOException;
+import java.net.URI;
+import java.util.List;
 
-public class FileServiceImpl implements FileService {
-    private static Logger logger = LoggerFactory.getLogger(FileServiceImpl.class);
+public class FileServiceRestTemplateImpl implements FileService {
+    private static Logger logger = LoggerFactory.getLogger(FileServiceRestTemplateImpl.class);
 
     private final RestTemplate restTemplate;
 
-    public FileServiceImpl(RestTemplate restTemplate) {
+    public FileServiceRestTemplateImpl(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
     }
 

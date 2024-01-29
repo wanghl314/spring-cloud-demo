@@ -1,15 +1,13 @@
 package com.whl.spring.cloud.demo.consumer.config;
 
 import com.alibaba.cloud.sentinel.annotation.SentinelRestTemplate;
-import com.whl.spring.cloud.demo.service.FileServiceV2;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestClient;
 import org.springframework.web.client.RestTemplate;
-import org.springframework.web.client.support.RestClientAdapter;
-import org.springframework.web.service.invoker.HttpServiceProxyFactory;
+import org.springframework.web.reactive.function.client.WebClient;
 
 @Configuration
 public class ConsumerConfig {
@@ -22,15 +20,14 @@ public class ConsumerConfig {
     }
 
     @Bean
-    public RestClient restClient(RestTemplate restTemplate) {
-        return RestClient.builder(restTemplate).build();
+    public RestClient.Builder restClient() {
+        return RestClient.builder();
     }
 
     @Bean
-    public FileServiceV2 fileServiceV2(RestClient restClient) {
-        RestClientAdapter adapter = RestClientAdapter.create(restClient);
-        HttpServiceProxyFactory factory = HttpServiceProxyFactory.builderFor(adapter).build();
-        return factory.createClient(FileServiceV2.class);
+    @LoadBalanced
+    public WebClient.Builder webClientBuilder() {
+        return WebClient.builder();
     }
 
 }
