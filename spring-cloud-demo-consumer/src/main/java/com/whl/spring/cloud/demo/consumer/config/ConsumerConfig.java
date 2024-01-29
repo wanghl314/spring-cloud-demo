@@ -20,7 +20,8 @@ public class ConsumerConfig {
     }
 
     @Bean
-    public RestClient.Builder restClient() {
+    @LoadBalanced
+    public RestClient.Builder restClientBuilder() {
         return RestClient.builder();
     }
 

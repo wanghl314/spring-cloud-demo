@@ -14,6 +14,7 @@ import org.springframework.boot.autoconfigure.web.ServerProperties;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.io.OutputStream;
 
 @RestController
@@ -45,7 +46,28 @@ public class RpcFileController {
     @GetMapping("/download/{name}")
     public void testDownload(HttpServletRequest request, HttpServletResponse response, @PathVariable String name) throws Exception {
         logger.info("download, {}", name);
-        FileInfo fileInfo = this.fileServiceHttpExchangeRestClientImpl.download(name);
+        FileInfo fileInfo = null;
+
+        try {
+            fileInfo = this.fileServiceHttpExchangeRestTemplateImpl.download(name);
+            logger.info("HttpExchangeRestTemplate: {}", fileInfo);
+        } catch (IOException e) {
+            logger.error(e.getMessage(), e);
+        }
+
+        try {
+            fileInfo = this.fileServiceHttpExchangeRestClientImpl.download(name);
+            logger.info("HttpExchangeRestTemplate: {}", fileInfo);
+        } catch (IOException e) {
+            logger.error(e.getMessage(), e);
+        }
+
+        try {
+            fileInfo = this.fileServiceHttpExchangeWebClientImpl.download(name);
+            logger.info("HttpExchangeRestTemplate: {}", fileInfo);
+        } catch (IOException e) {
+            logger.error(e.getMessage(), e);
+        }
 
         if (fileInfo != null) {
             response.setHeader("Content-Type", fileInfo.getContentType());

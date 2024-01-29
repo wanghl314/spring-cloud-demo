@@ -4,12 +4,12 @@ import com.whl.spring.cloud.demo.service.FileService;
 import com.whl.spring.cloud.demo.service.FileServiceHttpExchange;
 import com.whl.spring.cloud.demo.service.impl.FileServiceHttpExchangeImpl;
 import com.whl.spring.cloud.demo.service.impl.FileServiceRestTemplateImpl;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.client.ClientHttpRequestInterceptor;
-import org.springframework.util.CollectionUtils;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.web.client.RestClient;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.client.support.RestClientAdapter;
@@ -17,8 +17,6 @@ import org.springframework.web.client.support.RestTemplateAdapter;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.reactive.function.client.support.WebClientAdapter;
 import org.springframework.web.service.invoker.HttpServiceProxyFactory;
-
-import java.util.List;
 
 @Configuration
 public class FileAutoConfiguration {
@@ -54,14 +52,10 @@ public class FileAutoConfiguration {
         @Configuration
         @ConditionalOnBean(RestClient.Builder.class)
         static class HttpExchangeRestClientEngine {
-            @Autowired(required = false)
-            private List<ClientHttpRequestInterceptor> interceptors;
 
             @Bean("fileServiceHttpExchangeRestClientImpl")
+            @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE, proxyMode = ScopedProxyMode.TARGET_CLASS)
             public FileService fileService(RestClient.Builder restClientBuilder) {
-                if (!CollectionUtils.isEmpty(this.interceptors)) {
-                    restClientBuilder.requestInterceptors(clientHttpRequestInterceptors -> clientHttpRequestInterceptors.addAll(interceptors));
-                }
                 RestClient restClient = restClientBuilder.build();
                 RestClientAdapter adapter = RestClientAdapter.create(restClient);
                 HttpServiceProxyFactory factory = HttpServiceProxyFactory.builderFor(adapter).build();
