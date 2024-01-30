@@ -29,18 +29,24 @@ public class RpcFileController {
     @Qualifier("fileServiceHttpExchangeRestTemplateImpl")
     private FileService fileServiceHttpExchangeRestTemplateImpl;
 
-    @Autowired
+    @Autowired(required = false)
     @Qualifier("fileServiceHttpExchangeRestClientImpl")
     private FileService fileServiceHttpExchangeRestClientImpl;
 
-    @Autowired
+    @Autowired(required = false)
     @Qualifier("fileServiceHttpExchangeWebClientImpl")
     private FileService fileServiceHttpExchangeWebClientImpl;
 
     @PostMapping("/upload")
     public FileInfo testUpload(@RequestParam(value = "file") MultipartFile file) throws Exception {
         logger.info("upload");
-        return this.fileServiceHttpExchangeRestClientImpl.upload(file, file.getOriginalFilename());
+
+        if (this.fileServiceHttpExchangeWebClientImpl != null) {
+            return this.fileServiceHttpExchangeWebClientImpl.upload(file, file.getOriginalFilename());
+        } else if (this.fileServiceHttpExchangeRestClientImpl != null) {
+            return this.fileServiceHttpExchangeRestClientImpl.upload(file, file.getOriginalFilename());
+        }
+        return this.fileServiceHttpExchangeRestTemplateImpl.upload(file, file.getOriginalFilename());
     }
 
     @GetMapping("/download/{name}")
@@ -55,18 +61,22 @@ public class RpcFileController {
             logger.error(e.getMessage(), e);
         }
 
-        try {
-            fileInfo = this.fileServiceHttpExchangeRestClientImpl.download(name);
-            logger.info("HttpExchangeRestTemplate: {}", fileInfo);
-        } catch (IOException e) {
-            logger.error(e.getMessage(), e);
+        if (this.fileServiceHttpExchangeRestClientImpl != null) {
+            try {
+                fileInfo = this.fileServiceHttpExchangeRestClientImpl.download(name);
+                logger.info("HttpExchangeRestClient: {}", fileInfo);
+            } catch (IOException e) {
+                logger.error(e.getMessage(), e);
+            }
         }
 
-        try {
-            fileInfo = this.fileServiceHttpExchangeWebClientImpl.download(name);
-            logger.info("HttpExchangeRestTemplate: {}", fileInfo);
-        } catch (IOException e) {
-            logger.error(e.getMessage(), e);
+        if (this.fileServiceHttpExchangeWebClientImpl != null) {
+            try {
+                fileInfo = this.fileServiceHttpExchangeWebClientImpl.download(name);
+                logger.info("HttpExchangeWebClient: {}", fileInfo);
+            } catch (IOException e) {
+                logger.error(e.getMessage(), e);
+            }
         }
 
         if (fileInfo != null) {

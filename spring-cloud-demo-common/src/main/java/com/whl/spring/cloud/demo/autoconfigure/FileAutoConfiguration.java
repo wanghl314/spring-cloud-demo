@@ -6,6 +6,7 @@ import com.whl.spring.cloud.demo.service.impl.FileServiceHttpExchangeImpl;
 import com.whl.spring.cloud.demo.service.impl.FileServiceRestTemplateImpl;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
@@ -25,59 +26,50 @@ public class FileAutoConfiguration {
     @ConditionalOnBean(RestTemplate.class)
     static class RestTemplateEngine {
 
-        @Bean("fileServiceRestTemplateImpl")
-        public FileService fileService(RestTemplate restTemplate) {
+        @Bean
+        public FileService fileServiceRestTemplateImpl(RestTemplate restTemplate) {
             return new FileServiceRestTemplateImpl(restTemplate);
+        }
+
+        @Bean
+        public FileService fileServiceHttpExchangeRestTemplateImpl(RestTemplate restTemplate) {
+            RestTemplateAdapter adapter = RestTemplateAdapter.create(restTemplate);
+            HttpServiceProxyFactory factory = HttpServiceProxyFactory.builderFor(adapter).build();
+            FileServiceHttpExchange httpExchange = factory.createClient(FileServiceHttpExchange.class);
+            return new FileServiceHttpExchangeImpl(httpExchange);
         }
 
     }
 
     @Configuration
-    static class HttpExchangeEngine {
+    @ConditionalOnClass(RestClient.class)
+    static class RestClientEngine {
 
-        @Configuration
-        @ConditionalOnBean(RestTemplate.class)
-        static class HttpExchangeRestTemplateEngine {
-
-            @Bean("fileServiceHttpExchangeRestTemplateImpl")
-            public FileService fileService(RestTemplate restTemplate) {
-                RestTemplateAdapter adapter = RestTemplateAdapter.create(restTemplate);
-                HttpServiceProxyFactory factory = HttpServiceProxyFactory.builderFor(adapter).build();
-                FileServiceHttpExchange httpExchange = factory.createClient(FileServiceHttpExchange.class);
-                return new FileServiceHttpExchangeImpl(httpExchange);
-            }
-
-        }
-
-        @Configuration
+        @Bean
         @ConditionalOnBean(RestClient.Builder.class)
-        static class HttpExchangeRestClientEngine {
-
-            @Bean("fileServiceHttpExchangeRestClientImpl")
-            @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE, proxyMode = ScopedProxyMode.TARGET_CLASS)
-            public FileService fileService(RestClient.Builder restClientBuilder) {
-                RestClient restClient = restClientBuilder.build();
-                RestClientAdapter adapter = RestClientAdapter.create(restClient);
-                HttpServiceProxyFactory factory = HttpServiceProxyFactory.builderFor(adapter).build();
-                FileServiceHttpExchange httpExchange = factory.createClient(FileServiceHttpExchange.class);
-                return new FileServiceHttpExchangeImpl(httpExchange);
-            }
-
+        @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE, proxyMode = ScopedProxyMode.TARGET_CLASS)
+        public FileService fileServiceHttpExchangeRestClientImpl(RestClient.Builder restClientBuilder) {
+            RestClient restClient = restClientBuilder.build();
+            RestClientAdapter adapter = RestClientAdapter.create(restClient);
+            HttpServiceProxyFactory factory = HttpServiceProxyFactory.builderFor(adapter).build();
+            FileServiceHttpExchange httpExchange = factory.createClient(FileServiceHttpExchange.class);
+            return new FileServiceHttpExchangeImpl(httpExchange);
         }
 
-        @Configuration
+    }
+
+    @Configuration
+    @ConditionalOnClass(WebClient.class)
+    static class WebClientEngine {
+
+        @Bean
         @ConditionalOnBean(WebClient.Builder.class)
-        static class HttpExchangeWebClientEngine {
-
-            @Bean("fileServiceHttpExchangeWebClientImpl")
-            public FileService fileService(WebClient.Builder webClientBuilder) {
-                WebClient webClient = webClientBuilder.build();
-                WebClientAdapter adapter = WebClientAdapter.create(webClient);
-                HttpServiceProxyFactory factory = HttpServiceProxyFactory.builderFor(adapter).build();
-                FileServiceHttpExchange httpExchange = factory.createClient(FileServiceHttpExchange.class);
-                return new FileServiceHttpExchangeImpl(httpExchange);
-            }
-
+        public FileService fileServiceHttpExchangeWebClientImpl(WebClient.Builder webClientBuilder) {
+            WebClient webClient = webClientBuilder.build();
+            WebClientAdapter adapter = WebClientAdapter.create(webClient);
+            HttpServiceProxyFactory factory = HttpServiceProxyFactory.builderFor(adapter).build();
+            FileServiceHttpExchange httpExchange = factory.createClient(FileServiceHttpExchange.class);
+            return new FileServiceHttpExchangeImpl(httpExchange);
         }
 
     }
