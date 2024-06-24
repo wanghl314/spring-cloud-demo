@@ -12,7 +12,7 @@
 
     <properties>
         <!-- org/apache/dubbo/dubbo-bom -->
-        <dubbo.version>3.2.13</dubbo.version>
+        <dubbo.version>3.2.14</dubbo.version>
         <java.version>17</java.version>
         <!-- org/apache/maven/plugins/maven-compiler-plugin -->
         <maven-compiler-plugin.version>3.13.0</maven-compiler-plugin.version>
