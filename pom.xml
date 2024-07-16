@@ -151,7 +151,6 @@
                         <outputDirectory>${project.basedir}/libs</outputDirectory>
                         <stripVersion>true</stripVersion>
                         <includeScope>compile</includeScope>
-                        <includeScope>provided</includeScope>
                         <includeScope>runtime</includeScope>
                     </configuration>
                 </plugin>
