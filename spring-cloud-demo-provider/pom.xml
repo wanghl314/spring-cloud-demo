@@ -84,9 +84,30 @@
     <build>
         <plugins>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <configuration>
+                    <excludeArtifactIds>
+                        spring-context-support
+                    </excludeArtifactIds>
+                    <artifactItems>
+                        <artifactItem>
+                            <groupId>com.alibaba.spring</groupId>
+                            <artifactId>spring-context-support</artifactId>
+                            <destFileName>alibaba-spring-context-support.jar</destFileName>
+                        </artifactItem>
+                    </artifactItems>
+                </configuration>
+            </plugin>
+            <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
+        <finalName>${project.artifactId}</finalName>
     </build>
 </project>
