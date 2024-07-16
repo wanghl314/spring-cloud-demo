@@ -24,13 +24,13 @@
         <reflections.version>0.10.2</reflections.version>
         <revision>1.0-SNAPSHOT</revision>
         <!-- com/alibaba/csp/sentinel-apache-dubbo3-adapter -->
-        <sentinel.version>1.8.6</sentinel.version>
+        <sentinel.version>1.8.8</sentinel.version>
         <!-- org/springframework/boot/spring-boot-dependencies -->
         <spring-boot.version>3.2.7</spring-boot.version>
         <!-- org/springframework/cloud/spring-cloud-dependencies -->
-        <spring-cloud.version>2023.0.2</spring-cloud.version>
+        <spring-cloud.version>2023.0.3</spring-cloud.version>
         <!-- com/alibaba/cloud/spring-cloud-alibaba-dependencies -->
-        <spring-cloud-alibaba.version>2023.0.1.0</spring-cloud-alibaba.version>
+        <spring-cloud-alibaba.version>2023.0.1.2</spring-cloud-alibaba.version>
     </properties>
 
     <repositories>
