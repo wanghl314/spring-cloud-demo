@@ -12,12 +12,12 @@
 
     <properties>
         <!-- org/apache/dubbo/dubbo-bom -->
-        <dubbo.version>3.2.15</dubbo.version>
+        <dubbo.version>3.2.16</dubbo.version>
         <java.version>17</java.version>
         <!-- org/apache/maven/plugins/maven-compiler-plugin -->
         <maven-compiler-plugin.version>3.13.0</maven-compiler-plugin.version>
         <!-- org/apache/maven/plugins/maven-javadoc-plugin -->
-        <maven-javadoc-plugin.version>3.8.0</maven-javadoc-plugin.version>
+        <maven-javadoc-plugin.version>3.10.0</maven-javadoc-plugin.version>
         <!-- org/apache/maven/plugins/maven-source-plugin -->
         <maven-source-plugin.version>3.3.1</maven-source-plugin.version>
         <!-- org/reflections/reflections -->
