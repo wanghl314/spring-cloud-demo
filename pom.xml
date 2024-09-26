@@ -26,7 +26,7 @@
         <!-- com/alibaba/csp/sentinel-apache-dubbo3-adapter -->
         <sentinel.version>1.8.8</sentinel.version>
         <!-- org/springframework/boot/spring-boot-dependencies -->
-        <spring-boot.version>3.3.3</spring-boot.version>
+        <spring-boot.version>3.3.4</spring-boot.version>
         <!-- org/springframework/cloud/spring-cloud-dependencies -->
         <spring-cloud.version>2023.0.3</spring-cloud.version>
         <!-- com/alibaba/cloud/spring-cloud-alibaba-dependencies -->
