@@ -25,6 +25,8 @@
         <revision>1.0-SNAPSHOT</revision>
         <!-- com/alibaba/csp/sentinel-apache-dubbo3-adapter -->
         <sentinel.version>1.8.8</sentinel.version>
+        <!-- org/apache/seata/seata-bom -->
+        <seata.version>2.1.0</seata.version>
         <!-- org/springframework/boot/spring-boot-dependencies -->
         <spring-boot.version>3.3.4</spring-boot.version>
         <!-- org/springframework/cloud/spring-cloud-dependencies -->
@@ -73,6 +75,13 @@
                 <groupId>org.apache.dubbo</groupId>
                 <artifactId>dubbo-bom</artifactId>
                 <version>${dubbo.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.seata</groupId>
+                <artifactId>seata-bom</artifactId>
+                <version>${seata.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
