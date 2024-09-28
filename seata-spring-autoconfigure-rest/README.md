@@ -1,0 +1,1 @@
+alibaba-seata 切换到 apache-seata 后，缺少对 RestTemplate 的支持，本项目实现了这一点，通过 RestTemplate 调用也可传输全局事务

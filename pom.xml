@@ -237,5 +237,6 @@
         <module>spring-cloud-demo-interface</module>
         <module>spring-cloud-demo-provider</module>
         <module>dubbo-spring-boot-observability-autoconfigure</module>
+        <module>seata-spring-autoconfigure-rest</module>
     </modules>
 </project>

@@ -1,8 +1,8 @@
 package com.whl.spring.cloud.demo.consumer.service.impl;
 
-import java.sql.PreparedStatement;
-import java.util.Random;
-
+import com.whl.spring.cloud.demo.consumer.bean.Order;
+import com.whl.spring.cloud.demo.consumer.service.OrderService;
+import org.apache.seata.core.context.RootContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,10 +18,8 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
-import com.whl.spring.cloud.demo.consumer.bean.Order;
-import com.whl.spring.cloud.demo.consumer.service.OrderService;
-
-import io.seata.core.context.RootContext;
+import java.sql.PreparedStatement;
+import java.util.Random;
 
 @Service
 public class OrderServiceImpl implements OrderService {
