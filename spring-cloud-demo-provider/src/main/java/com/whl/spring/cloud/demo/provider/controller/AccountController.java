@@ -30,7 +30,7 @@ public class AccountController {
         logger.info("Account Service ... xid: " + RootContext.getXID());
 
         if (random.nextBoolean()) {
-            throw new RuntimeException("this is a mock Exception");
+            throw new RuntimeException("this is a mock Account Service Exception");
         }
 
         int result = jdbcTemplate.update(

@@ -73,7 +73,7 @@ public class OrderServiceImpl implements OrderService {
         order.id = keyHolder.getKey().longValue();
 
         if (random.nextBoolean()) {
-            throw new RuntimeException("this is a mock Exception");
+            throw new RuntimeException("this is a mock Order Service Exception");
         }
 
         logger.info("Order Service End ... Created " + order);
