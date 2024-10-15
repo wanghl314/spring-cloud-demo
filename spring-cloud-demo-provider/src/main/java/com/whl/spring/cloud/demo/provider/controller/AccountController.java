@@ -4,7 +4,7 @@ import org.apache.seata.core.context.RootContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.simple.JdbcClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,7 +21,7 @@ public class AccountController {
     private static Logger logger = LoggerFactory.getLogger(AccountController.class);
 
     @Autowired
-    private JdbcTemplate jdbcTemplate;
+    private JdbcClient jdbcClient;
 
     private Random random = new Random();
 
@@ -33,9 +33,9 @@ public class AccountController {
             throw new RuntimeException("this is a mock Account Service Exception");
         }
 
-        int result = jdbcTemplate.update(
-                "update account_tbl set money = money - ? where user_id = ?",
-                new Object[] { money, userId });
+        int result = this.jdbcClient.sql("update account_tbl set money = money - ? where user_id = ?")
+                .params(money, userId)
+                .update();
         logger.info("Account Service End ... ");
         if (result == 1) {
             return SUCCESS;

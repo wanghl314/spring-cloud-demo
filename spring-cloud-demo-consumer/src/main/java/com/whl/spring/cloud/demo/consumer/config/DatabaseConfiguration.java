@@ -1,19 +1,18 @@
 package com.whl.spring.cloud.demo.consumer.config;
 
+import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.jdbc.core.JdbcTemplate;
-
-import jakarta.annotation.PostConstruct;
+import org.springframework.jdbc.core.simple.JdbcClient;
 
 @Configuration
 public class DatabaseConfiguration {
     @Autowired
-    private JdbcTemplate jdbcTemplate;
+    private JdbcClient jdbcClient;
 
     @PostConstruct
     public void init() {
-        this.jdbcTemplate.execute("TRUNCATE TABLE order_tbl");
+        this.jdbcClient.sql("TRUNCATE TABLE order_tbl").update();
     }
 
 }

@@ -10,7 +10,7 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.simple.JdbcClient;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Service;
@@ -18,7 +18,7 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
-import java.sql.PreparedStatement;
+import java.util.Objects;
 import java.util.Random;
 
 @Service
@@ -36,7 +36,7 @@ public class OrderServiceImpl implements OrderService {
     private static final Logger logger = LoggerFactory.getLogger(OrderServiceImpl.class);
 
     @Autowired
-    private JdbcTemplate jdbcTemplate;
+    private JdbcClient jdbcClient;
 
     @Autowired
     private RestTemplate restTemplate;
@@ -59,18 +59,11 @@ public class OrderServiceImpl implements OrderService {
 
         KeyHolder keyHolder = new GeneratedKeyHolder();
 
-        int result = jdbcTemplate.update(conn -> {
-            PreparedStatement pst = conn.prepareStatement(
-                    "insert into order_tbl (user_id, commodity_code, count, money) values (?, ?, ?, ?)",
-                    PreparedStatement.RETURN_GENERATED_KEYS);
-            pst.setObject(1, order.userId);
-            pst.setObject(2, order.commodityCode);
-            pst.setObject(3, order.count);
-            pst.setObject(4, order.money);
-            return pst;
-        }, keyHolder);
+        int result = jdbcClient.sql("insert into order_tbl (user_id, commodity_code, count, money) values (?, ?, ?, ?)")
+                .params(order.userId, order.commodityCode, order.count, order.money)
+                .update(keyHolder);
 
-        order.id = keyHolder.getKey().longValue();
+        order.id = Objects.requireNonNull(keyHolder.getKey()).longValue();
 
         if (random.nextBoolean()) {
             throw new RuntimeException("this is a mock Order Service Exception");

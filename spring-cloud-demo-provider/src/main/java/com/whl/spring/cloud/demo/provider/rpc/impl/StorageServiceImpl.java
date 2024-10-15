@@ -6,7 +6,7 @@ import org.apache.seata.core.context.RootContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.simple.JdbcClient;
 
 @DubboService
 public class StorageServiceImpl implements StorageService {
@@ -17,14 +17,14 @@ public class StorageServiceImpl implements StorageService {
     private static Logger logger = LoggerFactory.getLogger(StorageServiceImpl.class);
 
     @Autowired
-    private JdbcTemplate jdbcTemplate;
+    private JdbcClient jdbcClient;
 
     @Override
     public String storage(String commodityCode, int count) {
         logger.info("Storage Service Begin ... xid: " + RootContext.getXID());
-        int result = this.jdbcTemplate.update(
-                "update storage_tbl set count = count - ? where commodity_code = ?",
-                new Object[] { count, commodityCode });
+        int result = this.jdbcClient.sql("update storage_tbl set count = count - ? where commodity_code = ?")
+                .params(count, commodityCode)
+                .update();
         logger.info("Storage Service End ... ");
         if (result == 1) {
             return SUCCESS;
