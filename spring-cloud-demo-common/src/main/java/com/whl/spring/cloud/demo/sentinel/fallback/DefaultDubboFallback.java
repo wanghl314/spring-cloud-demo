@@ -1,29 +1,22 @@
 package com.whl.spring.cloud.demo.sentinel.fallback;
 
-import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
-import org.apache.dubbo.rpc.AsyncRpcResult;
-import org.apache.dubbo.rpc.Invocation;
-import org.apache.dubbo.rpc.Invoker;
-import org.apache.dubbo.rpc.Result;
-import org.apache.dubbo.rpc.RpcException;
-import org.apache.dubbo.rpc.RpcInvocation;
-import org.apache.dubbo.rpc.support.RpcUtils;
-import org.springframework.util.CollectionUtils;
-
-import com.whl.spring.cloud.demo.util.DubboUtils;
-import com.whl.spring.cloud.demo.sentinel.annotation.AddSentinel;
-import com.whl.spring.cloud.demo.sentinel.annotation.DemoSentinelResource;
 import com.whl.spring.cloud.demo.sentinel.SentinelExceptionEnum;
 import com.whl.spring.cloud.demo.sentinel.SentinelResult;
+import com.whl.spring.cloud.demo.sentinel.annotation.AddSentinel;
+import com.whl.spring.cloud.demo.sentinel.annotation.DemoSentinelResource;
+import com.whl.spring.cloud.demo.util.DubboUtils;
 import com.whl.spring.cloud.demo.util.ReflectionUtils;
+import org.apache.dubbo.rpc.*;
+import org.apache.dubbo.rpc.support.RpcUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.util.CollectionUtils;
+
+import java.lang.reflect.Method;
+import java.util.*;
 
 public class DefaultDubboFallback implements DubboFallback {
+    private static Logger logger = LoggerFactory.getLogger(DefaultDubboFallback.class);
 
     @Override
     public Result handle(Invoker<?> invoker, Invocation invocation, RpcException e) {
@@ -41,7 +34,7 @@ public class DefaultDubboFallback implements DubboFallback {
                 return AsyncRpcResult.newDefaultAsyncResult(result, invocation);
             }
         } catch (Exception ex) {
-            ex.printStackTrace();
+            logger.error(ex.getMessage(), ex);
         }
         return AsyncRpcResult.newDefaultAsyncResult(e, invocation);
     }
