@@ -28,7 +28,7 @@
         <!-- org/apache/seata/seata-bom -->
         <seata.version>2.2.0</seata.version>
         <!-- org/springframework/boot/spring-boot-dependencies -->
-        <spring-boot.version>3.4.1</spring-boot.version>
+        <spring-boot.version>3.4.2</spring-boot.version>
         <!-- org/springframework/cloud/spring-cloud-dependencies -->
         <spring-cloud.version>2024.0.0</spring-cloud.version>
         <!-- com/alibaba/cloud/spring-cloud-alibaba-dependencies -->
