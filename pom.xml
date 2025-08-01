@@ -26,11 +26,11 @@
         <!-- com/alibaba/csp/sentinel-apache-dubbo3-adapter -->
         <sentinel.version>1.8.8</sentinel.version>
         <!-- org/apache/seata/seata-bom -->
-        <seata.version>2.3.0</seata.version>
+        <seata.version>2.4.0</seata.version>
         <!-- org/springframework/boot/spring-boot-dependencies -->
-        <spring-boot.version>3.4.6</spring-boot.version>
+        <spring-boot.version>3.4.8</spring-boot.version>
         <!-- org/springframework/cloud/spring-cloud-dependencies -->
-        <spring-cloud.version>2024.0.1</spring-cloud.version>
+        <spring-cloud.version>2024.0.2</spring-cloud.version>
         <!-- com/alibaba/cloud/spring-cloud-alibaba-dependencies -->
         <spring-cloud-alibaba.version>2023.0.3.3</spring-cloud-alibaba.version>
     </properties>
@@ -84,6 +84,11 @@
                 <version>${seata.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.seata</groupId>
+                <artifactId>seata-spring-boot-starter</artifactId>
+                <version>${seata.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.reflections</groupId>
