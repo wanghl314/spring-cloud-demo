@@ -26,7 +26,7 @@
         <!-- com/alibaba/csp/sentinel-apache-dubbo3-adapter -->
         <sentinel.version>1.8.8</sentinel.version>
         <!-- org/apache/seata/seata-bom -->
-        <seata.version>2.4.0</seata.version>
+        <seata.version>2.5.0</seata.version>
         <!-- org/springframework/boot/spring-boot-dependencies -->
         <spring-boot.version>3.4.8</spring-boot.version>
         <!-- org/springframework/cloud/spring-cloud-dependencies -->
