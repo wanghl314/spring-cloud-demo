@@ -52,8 +52,8 @@
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>io.zipkin.zipkin2</groupId>
-            <artifactId>zipkin</artifactId>
+            <groupId>io.opentelemetry</groupId>
+            <artifactId>opentelemetry-exporter-zipkin</artifactId>
         </dependency>
         <dependency>
             <groupId>jakarta.servlet</groupId>
