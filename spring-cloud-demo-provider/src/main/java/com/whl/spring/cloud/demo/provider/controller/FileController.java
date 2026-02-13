@@ -1,32 +1,25 @@
 package com.whl.spring.cloud.demo.provider.controller;
 
+import com.alibaba.cloud.commons.io.IOUtils;
+import com.whl.spring.cloud.demo.bean.FileInfo;
+import com.whl.spring.cloud.demo.util.FileUtils;
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.web.ServerProperties;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
 import java.io.File;
 import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.UUID;
-
-import org.apache.commons.lang.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.web.ServerProperties;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
-
-import com.alibaba.cloud.commons.io.IOUtils;
-import com.whl.spring.cloud.demo.bean.FileInfo;
-import com.whl.spring.cloud.demo.util.FileUtils;
-
-import jakarta.servlet.RequestDispatcher;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 
 @RestController
 @RequestMapping("/file")
@@ -79,9 +72,9 @@ public class FileController {
         logger.info("download, {}", name);
         Path path = this.getFileStorePath();
         Path file = path.resolve(name);
+        File storeFile = file.toFile();
 
-        if (file != null) {
-            File storeFile = file.toFile();
+        if (storeFile.exists()) {
             response.setHeader("Content-Type", FileUtils.getContentType(storeFile));
             response.setHeader("Content-Disposition", "attachment; filename=" + name);
             response.setHeader("Content-Length", String.valueOf(storeFile.length()));

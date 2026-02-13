@@ -1,17 +1,16 @@
 package com.whl.spring.cloud.demo.provider.rpc.impl;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
+import com.alibaba.csp.sentinel.slots.block.BlockException;
+import com.whl.spring.cloud.demo.service.DemoService;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.RandomUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
-import com.alibaba.csp.sentinel.annotation.SentinelResource;
-import com.alibaba.csp.sentinel.slots.block.BlockException;
-import com.whl.spring.cloud.demo.service.DemoService;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @Service("demoServiceImpl")
 public class DemoServiceImpl implements DemoService {
@@ -28,7 +27,7 @@ public class DemoServiceImpl implements DemoService {
     @SentinelResource(value = "demoService#test2", blockHandler = "handlerTest2")
     @Override
     public String test2(String name) {
-        String message = "Hello " + name + ", random long is " + RandomUtils.nextLong();
+        String message = "Hello " + name + ", random long is " + RandomUtils.secure().randomLong();
         logger.info(message);
         return message;
     }
@@ -36,7 +35,7 @@ public class DemoServiceImpl implements DemoService {
     @SentinelResource(value = "demoService#test3", blockHandler = "handlerTest3")
     @Override
     public String test3(String name) {
-        String message = "Hello " + name + ", random string is " + RandomStringUtils.randomAlphanumeric(10);
+        String message = "Hello " + name + ", random string is " + RandomStringUtils.secure().nextAlphanumeric(10);
         logger.info(message);
         return message;
     }
