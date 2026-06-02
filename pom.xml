@@ -24,13 +24,13 @@
         <reflections.version>0.10.2</reflections.version>
         <revision>1.0-SNAPSHOT</revision>
         <!-- com/alibaba/csp/sentinel-apache-dubbo3-adapter -->
-        <sentinel.version>1.8.9</sentinel.version>
+        <sentinel.version>1.8.10</sentinel.version>
         <!-- org/apache/seata/seata-bom -->
         <seata.version>2.6.0</seata.version>
         <!-- org/springframework/boot/spring-boot-dependencies -->
         <spring-boot.version>3.5.14</spring-boot.version>
         <!-- org/springframework/cloud/spring-cloud-dependencies -->
-        <spring-cloud.version>2025.0.1</spring-cloud.version>
+        <spring-cloud.version>2025.0.2</spring-cloud.version>
         <!-- com/alibaba/cloud/spring-cloud-alibaba-dependencies -->
         <spring-cloud-alibaba.version>2025.0.0.0</spring-cloud-alibaba.version>
     </properties>
