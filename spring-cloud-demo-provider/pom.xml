@@ -65,7 +65,7 @@
         </dependency>
         <dependency>
             <groupId>org.apache.dubbo</groupId>
-            <artifactId>dubbo-spring-boot-tracing-brave-zipkin-starter</artifactId>
+            <artifactId>dubbo-tracing-brave-zipkin-spring-boot-starter</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.seata</groupId>
